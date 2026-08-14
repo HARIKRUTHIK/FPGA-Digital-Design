@@ -1,0 +1,23 @@
+module consuma(input [3:0] a,b, input cin, output [3:0] sum, output cout);
+wire s0,c0;
+fulladder f0(a[0],b[0],cin,s0,c0);
+wire s10,s11,c10,c11;
+fulladder f1(a[1],b[1],1'b0,s10,c10);
+fulladder f2(a[1],b[1],1'b1,s11,c11);
+wire s1,c1;
+assign s1 = c0 ? s11 : s10;
+assign c1 = c0 ? c11 : c10;
+wire s20,s21,c20,c21;
+fulladder f3(a[2],b[2],1'b0,s20,c20);
+fulladder f4(a[2],b[2],1'b1,s21,c21);
+wire s2,c2;
+assign s2 = c1 ? s21 : s20;
+assign c2 = c1 ? c21 : c20;
+wire s30,s31,c30,c31;
+fulladder f5(a[3],b[3],1'b0,s30,c30);
+fulladder f6(a[3],b[3],1'b1,s31,c31);
+wire s3;
+assign s3 = c2 ? s31 : s30;
+assign cout = c2 ? c31 : c30;
+assign sum = {s3,s2,s1,s0};
+endmodule
