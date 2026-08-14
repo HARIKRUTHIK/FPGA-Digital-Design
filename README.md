@@ -2,7 +2,7 @@
 
 A collection of Verilog RTL designs and simulation-oriented modules developed during FPGA and digital design laboratory work.
 
-The repository is organized from the HDL work contained in the supplied lab document. It covers combinational arithmetic, sequential arithmetic, memory, FIFO, FSM, DSP, clocking, and seven-segment display designs.
+The repository is organized from the HDL work contained in the supplied lab document. It covers combinational arithmetic, sequential arithmetic, memory, FIFO, FSM, DSP, clocking, seven-segment display designs, and FPGA-oriented FIR/Sobel implementations.
 
 ## Designs Included
 
@@ -33,10 +33,11 @@ The repository is organized from the HDL work contained in the supplied lab docu
 - Mealy vending machine
 - Moore vending machine
 
-### DSP / Image Processing
-- 4-tap serial FIR filter
-- 4-tap pipelined FIR filter
+### DSP / FPGA Image Processing
+- **4-tap serial FIR filter — FPGA implementation**
+- **4-tap pipelined FIR filter — FPGA-oriented design**
 - 4-tap parallel/pipelined-style FIR implementation
+- **Sobel edge detection — FPGA implementation**
 - Sobel edge detection using a 3×3 kernel
 
 ### Digital Clock / Display
@@ -63,9 +64,12 @@ FPGA-Digital-Design/
 │   └── fifo.v
 ├── 05_fsm/
 │   └── vending_machines.v
-├── 06_dsp/
-│   ├── fir_filters.v
-│   └── sobel_edge_detection.v
+├── 06_dsp_fpga/
+│   ├── fir_filters/
+│   │   ├── fir_serial_fpga.v
+│   │   └── fir_pipelined.v
+│   └── sobel_edge_detection_fpga/
+│       └── sobel_edge_detection.v
 ├── 07_digital_clock/
 │   └── digital_clock.v
 ├── 08_peripherals/
@@ -81,10 +85,12 @@ FPGA-Digital-Design/
 
 - Verilog HDL
 - ModelSim for simulation
-- Intel Quartus Prime for FPGA-oriented design work
+- Intel Quartus Prime for FPGA-oriented design and implementation
 
 ## Notes
 
 The source material supplied for this repository did not include the original Quartus project files, pin assignments, waveform images, RTL screenshots, or FPGA-board photographs. Therefore, the repository does not claim hardware results that are not present in the supplied material.
+
+The FIR and Sobel designs are kept under the FPGA/DSP section rather than as separate repositories because they were developed as part of the FPGA design work.
 
 Some source material contained repeated modules and formatting inconsistencies. The repository separates the designs into reusable Verilog files and avoids intentionally duplicating identical module definitions.
