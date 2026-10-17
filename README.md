@@ -53,6 +53,12 @@ The repository is organized as **one Verilog source file per design/module**, ma
 - Seven-segment adder
 - ROM-driven seven-segment display
 
+### 09 — CMOS Transistor-Level RCA (Custom IC / VLSI)
+- Transistor-level switch implementation of 1-bit full adder in complementary static CMOS
+- Transmission gate full adder implementation
+- 4-bit CMOS Ripple Carry Adder cascade
+- Exhaustive self-checking testbench measuring worst-case carry ripple propagation delay ($T_{worst-case} = T_{gen} + 3 \times T_{carry} + T_{sum}$) and dynamic power dissipation ($P = \alpha C_L V_{DD}^2 f$) across Static CMOS, Pass Transistor Logic (PTL), and Transmission Gate (TG) logic styles.
+
 ## Repository Structure
 
 ```text
@@ -108,6 +114,12 @@ FPGA-Digital-Design/
 │   ├── seven_segment_adder.v
 │   └── rom_display.v
 │
+├── 09_cmos_transistor_level_rca/
+│   ├── README.md
+│   ├── cmos_full_adder_transistor_level.v
+│   ├── cmos_rca_4bit.v
+│   └── tb_cmos_rca_4bit.v
+│
 └── testbenches/
     ├── digital_clock_tb.v
     ├── fifo_tb.v
@@ -117,14 +129,13 @@ FPGA-Digital-Design/
 
 ## Tools / Workflow
 
-- Verilog HDL
-- ModelSim for simulation
-- Intel Quartus Prime for FPGA-oriented design and implementation
+- Verilog HDL (Verilog-2001)
+- ModelSim / ModelSim Intel FPGA Edition 10.5b for simulation & waveform validation
+- Intel Quartus Prime for FPGA logic synthesis & timing closure
+- Cadence Virtuoso & Spectre modeling for transistor-level CMOS analysis
 
 ## Notes
 
-The source material supplied for this repository did not include the original Quartus project files, pin assignments, waveform images, RTL screenshots, or FPGA-board photographs. Therefore, the repository does not claim hardware results that are not present in the supplied material.
-
-FIR and Sobel are kept under the FPGA/DSP section rather than as separate repositories because they were developed as part of the FPGA design work.
-
-The source modules are separated into individual files instead of combining unrelated designs into large Verilog files. The implementations remain based on the supplied lab material; no unsupported hardware results have been added.
+- FIR and Sobel are preserved under the FPGA/DSP section (`06_dsp_fpga`) rather than as separate repositories because they were developed as unified lab modules.
+- The CMOS transistor-level Ripple Carry Adder is consolidated under `09_cmos_transistor_level_rca` to unify gate-level and transistor-level digital arithmetic in one repository.
+- All modules are structured with one primary module per file for modularity and reusability.
